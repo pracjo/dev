@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-java-app
+spec:
+  replicas: 2 # Change this to 1 if you only want one instance
+  selector:
+    matchLabels:
+      app: my-java-app
+  template:
+    metadata:
+      labels:
+        app: my-java-app
+    spec:
+      containers:
+      - name: my-java-container
+        image: freetimerenderzz100/my-java-app:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"

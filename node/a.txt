@@ -1,0 +1,24 @@
+ 
+FROM node:latest
+WORKDIR /app
+COPY nodeport.js .
+CMD ["node", "nodeport.js"]
+EXPOSE 3500
+
+
+const http = require('http');
+const name = "node port"; // Replace with your actual name
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(`Name: ${name}\n`);
+});
+
+const port = 3500;
+server.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}/`);
+});
+
+
+docker build -t my-nodeport .
+docker run -d -p 3500:3500 my-nodeport

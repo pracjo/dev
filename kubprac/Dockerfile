@@ -1,0 +1,18 @@
+FROM openjdk:latest
+WORKDIR /app
+COPY *.java .
+RUN javac *.java 
+CMD ["java","test"]
+
+# dockercontName = cont
+# docker build -t cont.
+# docker run -it cont
+# docker tag cont dockerhubusername/dockercontName
+# docker push cont/dockername 
+# minikube image load cont
+# kubectl apply -f deployment.yaml
+# kubectl get all
+# kubectl logs -f <podname>
+
+
+
